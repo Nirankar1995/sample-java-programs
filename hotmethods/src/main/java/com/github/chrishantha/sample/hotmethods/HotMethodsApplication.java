@@ -37,13 +37,17 @@ public class HotMethodsApplication implements SampleApplication {
         for (int i = 1; i < max; i++) {
             boolean isPrimeNumber = true;
             // Check whether the number is prime
-            for (int j = 2; j < i; j++) {
-                if (i % j == 0) {
-                    isPrimeNumber = false;
-                    break;
-                }
+            if (i%2 == 0) {
+                isPrimeNumber = false;   
             }
-
+            
+            for (int j = 2; j * j <= i; j += 2) {
+                    if(i % j == 0) {
+                        isPrimeNumber = false;
+                        break;
+                    }
+            }
+            
             if (isPrimeNumber) {
                 primeNumbers.add(i);
             }
